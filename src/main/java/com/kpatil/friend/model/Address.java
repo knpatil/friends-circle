@@ -1,12 +1,25 @@
 package com.kpatil.friend.model;
 
-import javax.persistence.Embeddable;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-@Embeddable
+@Entity
 public class Address {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
   private String street;
   private String city;
+
+  @JsonBackReference
+  @ManyToOne
+  private Friend friend;
 
   public String getStreet() {
     return street;

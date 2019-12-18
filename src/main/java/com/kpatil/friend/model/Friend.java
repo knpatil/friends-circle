@@ -1,18 +1,21 @@
 package com.kpatil.friend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import javax.persistence.Embedded;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Friend {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
   @JsonProperty("first-name")
@@ -26,15 +29,17 @@ public class Friend {
   @JsonIgnore
   private boolean married;
 
-  @Embedded
-  private Address address;
+  @JsonManagedReference
+  @OneToMany(mappedBy = "friend", cascade = CascadeType.ALL)
+  @JsonProperty("addresses")
+  private List<Address> addressList;
 
-  public Address getAddress() {
-    return address;
+  public List<Address> getAddressList() {
+    return addressList;
   }
 
-  public void setAddress(Address address) {
-    this.address = address;
+  public void setAddressList(List<Address> addressList) {
+    this.addressList = addressList;
   }
 
   public int getAge() {
