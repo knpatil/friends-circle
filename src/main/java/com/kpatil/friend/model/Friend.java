@@ -24,7 +24,7 @@ public class Friend {
   @JsonProperty("last-name")
   private String lastName;
 
-  int age;
+  private int age;
 
   @JsonIgnore
   private boolean married;
