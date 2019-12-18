@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Friend {
@@ -19,9 +20,11 @@ public class Friend {
   private int id;
 
   @JsonProperty("first-name")
+  @NotBlank
   private String firstName;
 
   @JsonProperty("last-name")
+  @NotBlank
   private String lastName;
 
   private int age;
