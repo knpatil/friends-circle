@@ -21,6 +21,14 @@ public class Address {
   @ManyToOne
   private Friend friend;
 
+  public Address() {
+  }
+
+  public Address(String street, String city) {
+    this.street = street;
+    this.city = city;
+  }
+
   public String getStreet() {
     return street;
   }

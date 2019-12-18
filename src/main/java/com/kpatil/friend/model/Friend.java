@@ -37,6 +37,19 @@ public class Friend {
   @JsonProperty("addresses")
   private List<Address> addressList;
 
+  public Friend() {
+  }
+
+  public Friend(@NotBlank String firstName,
+      @NotBlank String lastName, int age, boolean married,
+      List<Address> addressList) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.married = married;
+    this.addressList = addressList;
+  }
+
   public List<Address> getAddressList() {
     return addressList;
   }
